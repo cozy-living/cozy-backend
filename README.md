@@ -1,6 +1,6 @@
 ## Cozy
 
-## This is the backend repo for Cozy.
+## This is the backend repo for Cozy
 
 ### App Description
 
