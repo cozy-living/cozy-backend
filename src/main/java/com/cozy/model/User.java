@@ -28,8 +28,6 @@ public class User implements Serializable {
 
     private String role;
 
-    private int accountId;
-
     public User() {}
 
     private User(Builder builder) {
@@ -39,7 +37,6 @@ public class User implements Serializable {
         this.password = builder.password;
         this.suite = builder.suite;
         this.role = builder.role;
-        this.accountId = builder.accountId;
     }
 
     public int getUserId() {
@@ -96,15 +93,6 @@ public class User implements Serializable {
         return this;
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public User setAccountId(int accountId) {
-        this.accountId = accountId;
-        return this;
-    }
-
 
     public static class Builder {
         @JsonProperty("userId")
@@ -155,11 +143,6 @@ public class User implements Serializable {
 
         public Builder setRole(String role) {
             this.role = role;
-            return this;
-        }
-
-        public Builder setAccountId(int accountId) {
-            this.accountId = accountId;
             return this;
         }
 
