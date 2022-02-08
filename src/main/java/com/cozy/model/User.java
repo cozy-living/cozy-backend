@@ -15,7 +15,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int userId;
+    private int id;
 
     private String username;
 
@@ -31,7 +31,7 @@ public class User implements Serializable {
     public User() {}
 
     private User(Builder builder) {
-        this.userId = builder.userId;
+        this.id = builder.id;
         this.username = builder.username;
         this.email = builder.email;
         this.password = builder.password;
@@ -40,12 +40,7 @@ public class User implements Serializable {
     }
 
     public int getUserId() {
-        return userId;
-    }
-
-    public User setUserId(int userId) {
-        this.userId = userId;
-        return this;
+        return id;
     }
 
     public String getUsername() {
@@ -95,8 +90,8 @@ public class User implements Serializable {
 
 
     public static class Builder {
-        @JsonProperty("userId")
-        public int userId;
+        @JsonProperty("id")
+        public int id;
 
         @JsonProperty("username")
         private String username;
@@ -115,11 +110,6 @@ public class User implements Serializable {
 
         @JsonProperty("accountId")
         private int accountId;
-
-        public Builder setUserId(int userId) {
-            this.userId = userId;
-            return this;
-        }
 
         public Builder setUsername(String username) {
             this.username = username;

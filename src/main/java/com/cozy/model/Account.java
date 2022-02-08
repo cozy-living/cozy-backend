@@ -9,6 +9,9 @@ public class Account implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
+
     private int userId;
 
     private int balance;
@@ -22,6 +25,10 @@ public class Account implements Serializable {
     public Account(int userId, int balance) {
         this.userId = userId;
         this.balance = balance;
+    }
+
+    public int getAccountId() {
+        return id;
     }
 
     public int getUserId() {
