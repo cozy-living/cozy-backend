@@ -20,10 +20,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // TODO: allow more http methods here
         http
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/register/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/authenticate/*").permitAll()
+                .antMatchers(HttpMethod.POST, "/dashboard/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf()
