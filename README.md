@@ -1,6 +1,6 @@
 ## Cozy
 
-## This is the backend repo for Cozy
+### This is the backend repo for Cozy.
 
 ### App Description
 
@@ -27,9 +27,16 @@ Cozy is a community property management system that contains features including:
    run `git push --set-upstream origin [your branch name]` **the first time** after you created your local branch. Only
    push codes to GitHub if you make sure that the app is not broken after your latest code change.
 4. Regularly push your code to GitHub, and make pull requests from main branch to fetch latest changes.
+5. Remember to manaully update your `application.properties` file, as it is gitignored and only exists locally.
 
 ### Links
 
-1. [Team Member Info](https://docs.google.com/document/d/14SYkAEqYhgZmGCQBuUPtJFO8ZnaRMjY-mLqA42ufWHU/edit)
-2. [Design Doc & Meeting Notes](https://docs.google.com/document/d/1nL4bcvQmQDJLTFW4MXks3bw_MohTKD96hatoA1upAeU/edit#heading=h.hx7xvlxavo3z)
+*Please refer to database entity diagram, API documentation, feature assignment in meeting notes, and TODOs in the Spring Boot project when developing, and use Postman to test your APIs before pushing to GitHub*
+
+1. [Google Drive](https://drive.google.com/drive/u/0/folders/1NSGcEO8dKaahjkDrxAf-ZgzIof-ZQ_W4)
+2. [ERD](https://app.diagrams.net/#G1cGTd0oRyGkhQOIIeLI4RYASQOdp0Cfl6)
+3. [API Doc](https://docs.google.com/document/d/1LLQX0z0ZPF6sfsjUweT3RumIj0ZczjyTNE3MAvJYzzs/edit)
+4. [Meeting Notes](https://docs.google.com/document/d/1nL4bcvQmQDJLTFW4MXks3bw_MohTKD96hatoA1upAeU/edit)
+5. [PRD](https://docs.google.com/document/d/1zdTJFq294dYcr9dUOdOnD4Fx4tFR5DvIc9H20VWuZd8/edit)
+6. [Postman](https://www.getpostman.com/collections/d75bbc23a3a8a36674fd)
 
