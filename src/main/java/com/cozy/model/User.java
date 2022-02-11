@@ -111,6 +111,12 @@ public class User implements Serializable {
         @JsonProperty("accountId")
         private int accountId;
 
+        //Jiayi add this function.
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
         public Builder setUsername(String username) {
             this.username = username;
             return this;
