@@ -26,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/register/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/authenticate/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/dashboard/*").permitAll()
+                .antMatchers("/reservation").permitAll()
+                .antMatchers("/reservation/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf()
