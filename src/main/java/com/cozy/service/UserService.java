@@ -16,14 +16,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class RegisterService {
+public class UserService {
     private UserRepository userRepository;
     private AccountRepository accountRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegisterService(UserRepository userRepository,
-                           AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository,
+                       AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;

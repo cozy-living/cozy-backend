@@ -2,7 +2,7 @@ package com.cozy.controller;
 
 import com.cozy.commons.UserRole;
 import com.cozy.model.User;
-import com.cozy.service.RegisterService;
+import com.cozy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class RegisterController {
-    private RegisterService registerService;
+public class UserController {
+    private UserService userService;
 
     @Autowired
-    public RegisterController(RegisterService registerService) {
-        this.registerService = registerService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     /**
@@ -25,7 +25,7 @@ public class RegisterController {
      */
     @PostMapping("/register")
     public User addUser(@RequestBody User user) {
-        return registerService.add(user, UserRole.RESIDENT);
+        return userService.add(user, UserRole.RESIDENT);
     }
 
 }

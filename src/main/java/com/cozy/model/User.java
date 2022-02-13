@@ -27,7 +27,8 @@ public class User implements Serializable {
     @JsonProperty("email")
     private String email;
 
-    /* @JsonIgnore will ignore everything, but we just want to
+    /*
+       @JsonIgnore will ignore everything, but we just want to
        serialize the setter and ignore the getter so that
        the raw password will hide in http response. So we will
        NOT be using @JsonIgnore on the password field.

@@ -37,9 +37,12 @@ public class Reservation implements Serializable {
     @JsonProperty("state")
     private String state;
 
+    /*
+      Many-to-one relationship to the User table.
+      We can add @ignore if we do not need to access the user field in reservation.
+     */
     @JoinColumn(name = "userId")
     @ManyToOne(targetEntity = User.class)
-    @JsonIgnore
     private User user;
 
 }
