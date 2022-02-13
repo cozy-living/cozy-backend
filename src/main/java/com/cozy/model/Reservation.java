@@ -1,113 +1,45 @@
 package com.cozy.model;
 
-import com.cozy.common.ServiceType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
-@JsonDeserialize(builder = Reservation.Builder.class)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Reservation implements Serializable {
-    // TODO: service request (model -> repository -> service -> controller -> register endpoint in config) - Guanxiaoxiong, Jianxun
+    private static final long serialVersionUID = 1L;
 
-    //PK
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @JsonProperty("id")
     private int id;
 
-    //enum
-    private ServiceType type;
-    private LocalDate datetime;
+    @JsonProperty("type")
+    private String type;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonProperty("date")
+    private Date date;
+
+//    @CreationTimestamp
+//    @JsonProperty("date")
+//    private LocalDateTime date;
+
+    @JsonProperty("state")
     private String state;
 
-    //FK
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User residentId;
+    @JoinColumn(name = "userId")
+    @ManyToOne(targetEntity = User.class)
+    @JsonIgnore
+    private User user;
 
-
-    public Reservation() {
-    }
-
-    private Reservation(Builder builder) {
-        this.id = builder.id;
-        this.type = builder.type;
-        this.datetime = builder.datetime;
-        this.state = builder.state;
-        this.residentId = builder.residentId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public ServiceType getType() {
-        return type;
-    }
-
-    public LocalDate getDatetime() {
-        return datetime;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public User getResident() {
-        return residentId;
-    }
-
-
-    public static class Builder {
-        @JsonProperty("id")
-        private int id;
-
-        @JsonProperty("type")
-        private ServiceType type;
-
-        @JsonProperty("date_time")
-        private LocalDate datetime;
-
-
-        @JsonProperty("state")
-        private String state;
-
-        @JsonProperty("resident_id")
-        private User residentId;
-
-        public Builder setId(int id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder setType(ServiceType type) {
-            this.type = type;
-            return this;
-        }
-
-        public Builder setDatetime(LocalDate datetime) {
-            this.datetime = datetime;
-            return this;
-        }
-
-        public Builder setState(String state) {
-            this.state = state;
-            return this;
-        }
-
-        public Builder setResident(User residentId) {
-            this.residentId = residentId;
-            return this;
-        }
-
-        public Reservation build() {
-            return new Reservation(this);
-        }
-
-
-    }
 }

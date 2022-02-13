@@ -23,11 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // TODO: allow more http methods here
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/register/*").permitAll()
-                .antMatchers(HttpMethod.POST, "/authenticate/*").permitAll()
-                .antMatchers(HttpMethod.POST, "/dashboard/*").permitAll()
-                .antMatchers("/reservation").permitAll()
-                .antMatchers("/reservation/*").permitAll()
+//                .antMatchers(HttpMethod.POST, "/register/*").permitAll()
+//                .antMatchers(HttpMethod.POST, "/authenticate/*").permitAll()
+//                .antMatchers(HttpMethod.POST, "/dashboard/*").permitAll()
+//                .antMatchers(HttpMethod.GET, "/reservation/*").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf()

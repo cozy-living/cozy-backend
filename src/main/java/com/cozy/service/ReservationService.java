@@ -1,42 +1,59 @@
 package com.cozy.service;
 
+import com.cozy.exception.ResourceNotFoundException;
 import com.cozy.model.Reservation;
 import com.cozy.model.User;
 import com.cozy.repository.ReservationRepository;
+import com.cozy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ReservationService {
     private ReservationRepository reservationRepository;
-    List<Reservation> reservationList = new ArrayList<>();
+    private UserRepository userRepository;
 
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository) {
+    public ReservationService(ReservationRepository reservationRepository, UserRepository userRepository) {
         this.reservationRepository = reservationRepository;
+        this.userRepository = userRepository;
     }
 
-    //add reservation
-    public void add(Reservation reservation) {
+    public Reservation add(int userId, Reservation reservation) {
+        User user = userRepository.findById(userId);
+//        List<Reservation> reservations = user.getReservations();
+//        reservations.add(reservation);
+//        user.setReservations(reservations);
+        reservation.setUser(user);
         reservationRepository.save(reservation);
+        return reservation;
     }
 
-    //list of resident's reservation
-//    public List<Reservation> listByResidentId(User residentId) {
-//        return reservationRepository.findByResidentId(residentId);
-//    }
-
-    //list of reservations
-    public List<Reservation> reservations(Reservation reservation) {
+    public List<Reservation> getAll() {
         return reservationRepository.findAll();
     }
 
-//    Decline the reservation
-    public void delete(int reservationId) {
-        reservationRepository.deleteById(reservationId);
+    public List<Reservation> getAllByUser(int userId) {
+        return reservationRepository.findAllByUserId(userId);
+    }
+
+    public void put(int reservationId, Reservation reservationRequest) {
+        reservationRepository.findById(reservationId).map(reservation -> {
+            reservation.setState(reservationRequest.getState());
+            reservationRepository.save(reservation);
+            return reservation;
+        }).orElseThrow(() -> new ResourceNotFoundException
+                ("reservation id " + reservationId + " not found"));
+    }
+
+    public ResponseEntity<?> delete(int reservationId) {
+        return reservationRepository.findById(reservationId).map(reservation -> {
+            reservationRepository.delete(reservation);
+            return ResponseEntity.ok().build();
+        }).orElseThrow(() -> new ResourceNotFoundException
+                ("reservation id " + reservationId + " not found"));
     }
 }

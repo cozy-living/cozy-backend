@@ -1,6 +1,6 @@
 package com.cozy.controller;
 
-import com.cozy.common.UserRole;
+import com.cozy.commons.UserRole;
 import com.cozy.model.User;
 import com.cozy.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +18,14 @@ public class RegisterController {
         this.registerService = registerService;
     }
 
-    /* addUser: User registers as a resident by default
-       Method: POST
-       Endpoint: /register
+    /**
+     * addUser: User registers as a resident by default
+     * Method: POST
+     * Endpoint: /register
      */
     @PostMapping("/register")
-    public void addUser(@RequestBody User user) {
-        registerService.add(user, UserRole.RESIDENT);
+    public User addUser(@RequestBody User user) {
+        return registerService.add(user, UserRole.RESIDENT);
     }
 
 }

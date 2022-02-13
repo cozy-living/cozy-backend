@@ -1,56 +1,73 @@
 package com.cozy.controller;
 
-import com.cozy.common.ServiceType;
 import com.cozy.model.Reservation;
-import com.cozy.model.User;
 import com.cozy.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 public class ReservationController {
-    ReservationService reservationService;
+
+    private ReservationService reservationService;
 
     @Autowired
     public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
 
-    @PostMapping("/reservation")
-    public void addReservation(@RequestBody Reservation reservation) {
-        reservationService.add(reservation);
+    /**
+     * addReservation: Resident creates a new reservation
+     * Method: POST
+     * Endpoint: /{userId}/reservations
+     */
+    @PostMapping("/{userId}/reservations")
+    public Reservation addReservation(@PathVariable (value = "userId") int userId,
+                               @RequestBody Reservation reservation) {
+        return reservationService.add(userId, reservation);
     }
 
-//    @PostMapping("/reservation")
-//    public void addReservation(
-//            @RequestParam("type") ServiceType type,
-//            @RequestParam("datetime") LocalDate datetime,
-//            @RequestParam("state") String state,
-//            @RequestParam("residentId") User residentId) {
-//
-//        Reservation reservation= new Reservation.Builder()
-//                .setResident(residentId)
-//                .setType(type)
-//                .setDatetime(datetime)
-//                .setState(state)
-//                .build();
-//        reservationService.add(reservation);
-//    }
-
-    //admin get list of reservations
-    @GetMapping("/reservation/all")
-    public List<Reservation> listReservations(Reservation reservation) {
-        return reservationService.reservations(reservation);
+    /**
+     * listReservationsByUser: Resident lists all of his or her past reservations
+     * Method: GET
+     * Endpoint: /{userId}/reservations
+     */
+    @GetMapping("/{userId}/reservations")
+    public List<Reservation> listReservationsByUser(
+            @PathVariable (value = "userId") int userId) {
+        return reservationService.getAllByUser(userId);
     }
 
-    //admin reject the reservation
-    @DeleteMapping("/reservation/{reservationId}")
+    /**
+     * listReservations: Admin lists all reservations that haven't been processed
+     * Method: GET
+     * Endpoint: /reservations
+     */
+    @GetMapping("/reservations")
+    public List<Reservation> listReservations() {
+        return reservationService.getAll();
+    }
+
+    /**
+     * editReservation: Admin changes the state of a reservation
+     * Method: PUT
+     * Endpoint: /reservations/{reservationId}
+     */
+    @PutMapping("/reservations/{reservationId}")
+    public void editReservation(@PathVariable int reservationId,
+                                @RequestBody Reservation reservationRequest) {
+        reservationService.put(reservationId, reservationRequest);
+    }
+
+    /**
+     * deleteReservation: Admin deletes a reservation after changing its state
+     * Method: DELETE
+     * Endpoint: /reservations/{reservationId}
+     */
+    @DeleteMapping("/reservations/{reservationId}")
     public void deleteReservation(@PathVariable int reservationId) {
         reservationService.delete(reservationId);
     }
-
 
 }
