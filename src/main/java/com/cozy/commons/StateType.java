@@ -1,6 +1,6 @@
 package com.cozy.commons;
 
-// TODO: delete this and store it as a string instead
+// unnecessary to store this as an Enum type, but still keep this file as a naming convention guide
 
 public enum StateType {
     PENDING, COMPLETED

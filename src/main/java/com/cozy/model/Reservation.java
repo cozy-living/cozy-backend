@@ -1,12 +1,17 @@
 package com.cozy.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -30,6 +35,9 @@ public class Reservation implements Serializable {
     @JsonProperty("date")
     private Date date;
 
+//    @JsonFormat(pattern="yyyy-MM-dd")
+//    private LocalDate date;
+
 //    @CreationTimestamp
 //    @JsonProperty("date")
 //    private LocalDateTime date;
@@ -43,6 +51,8 @@ public class Reservation implements Serializable {
      */
     @JoinColumn(name = "userId")
     @ManyToOne(targetEntity = User.class)
+    @JsonIgnoreProperties({"email", "suite", "role"})
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
 }
