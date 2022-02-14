@@ -1,6 +1,6 @@
 package com.cozy.service;
 
-import com.cozy.common.UserRole;
+import com.cozy.commons.UserRole;
 import com.cozy.exception.UserNotExistException;
 import com.cozy.model.Token;
 import com.cozy.model.User;

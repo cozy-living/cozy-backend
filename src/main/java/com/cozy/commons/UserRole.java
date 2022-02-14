@@ -1,4 +1,4 @@
-package com.cozy.common;
+package com.cozy.commons;
 
 public enum UserRole {
     ADMIN, RESIDENT
