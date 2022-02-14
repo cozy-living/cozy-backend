@@ -2,6 +2,8 @@ package com.cozy.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -31,6 +33,7 @@ public class Event implements Serializable {
     // Many-to-one relationship to the User table.
     @JoinColumn(name = "userId")
     @ManyToOne(targetEntity = User.class)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
 }

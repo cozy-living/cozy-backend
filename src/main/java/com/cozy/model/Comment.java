@@ -2,6 +2,8 @@ package com.cozy.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -31,6 +33,7 @@ public class Comment implements Serializable {
     // Many-to-one relationship to the Post table.
     @JoinColumn(name = "postId")
     @ManyToOne(targetEntity = Post.class)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     private Post post;
 
 //    // Many-to-one relationship to the User table.

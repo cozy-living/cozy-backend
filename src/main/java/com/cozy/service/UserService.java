@@ -41,7 +41,6 @@ public class UserService {
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(role.name());
-//        user.setReservations(new ArrayList<>());
         userRepository.save(user);
         accountRepository.save(new Account(user.getId()));
         return user;

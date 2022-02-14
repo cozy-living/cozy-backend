@@ -52,22 +52,24 @@ public class ReservationController {
     /**
      * editReservation: Admin changes the state of a reservation
      * Method: PUT
-     * Endpoint: /reservations/{reservationId}
+     * Endpoint: /{userId}/reservations/{reservationId}
      */
-    @PutMapping("/reservations/{reservationId}")
-    public void editReservation(@PathVariable int reservationId,
+    @PutMapping("/{userId}/reservations/{reservationId}")
+    public void editReservation(@PathVariable("userId") int userId,
+                                @PathVariable("reservationId") int reservationId,
                                 @RequestBody Reservation reservationRequest) {
-        reservationService.put(reservationId, reservationRequest);
+        reservationService.put(userId, reservationId, reservationRequest);
     }
 
     /**
      * deleteReservation: Admin deletes a reservation after changing its state
      * Method: DELETE
-     * Endpoint: /reservations/{reservationId}
+     * Endpoint: /{userId}/reservations/{reservationId}
      */
-    @DeleteMapping("/reservations/{reservationId}")
-    public void deleteReservation(@PathVariable int reservationId) {
-        reservationService.delete(reservationId);
+    @DeleteMapping("/{userId}/reservations/{reservationId}")
+    public void deleteReservation(@PathVariable("userId") int userId,
+                                  @PathVariable("reservationId") int reservationId) {
+        reservationService.delete(userId, reservationId);
     }
 
 }

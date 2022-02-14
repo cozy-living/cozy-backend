@@ -1,12 +1,10 @@
 package com.cozy.service;
 
-import com.cozy.exception.ResourceNotFoundException;
 import com.cozy.model.Comment;
 import com.cozy.model.Post;
 import com.cozy.repository.CommentRepository;
 import com.cozy.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,22 +29,5 @@ public class CommentService {
 
     public List<Comment> getAllByPost(int postId) {
         return commentRepository.findAllByPostId(postId);
-    }
-
-    public void put(int commentId, Comment commentRequest) {
-        commentRepository.findById(commentId).map(comment -> {
-            comment.setContent(commentRequest.getContent());
-            commentRepository.save(comment);
-            return comment;
-        }).orElseThrow(() -> new ResourceNotFoundException
-                ("comment id " + commentId + " not found"));
-    }
-
-    public ResponseEntity<?> delete(int commentId) {
-        return commentRepository.findById(commentId).map(comment -> {
-            commentRepository.delete(comment);
-            return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new ResourceNotFoundException
-                ("comment id " + commentId + " not found"));
     }
 }
