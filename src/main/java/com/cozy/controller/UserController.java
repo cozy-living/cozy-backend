@@ -25,7 +25,8 @@ public class UserController {
      */
     @PostMapping("/register")
     public User addUser(@RequestBody User user) {
-        return userService.add(user, UserRole.RESIDENT);
+        return userService.add(user, UserRole.RESIDENT); // default option: add user as resident
+//         return userService.add(user, UserRole.ADMIN); // for manually adding user as admin
     }
 
 }

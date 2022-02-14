@@ -26,7 +26,7 @@ public class AccountController {
     }
 
     /**
-     * payBalance: Deduct the amount of balance in a user's account for payment
+     * payBalance: Set the amount of balance in a user's account for payment
      * Method: PUT
      * Endpoint: /{userId}/account
      */

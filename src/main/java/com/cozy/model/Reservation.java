@@ -1,6 +1,8 @@
 package com.cozy.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
@@ -49,6 +51,7 @@ public class Reservation implements Serializable {
      */
     @JoinColumn(name = "userId")
     @ManyToOne(targetEntity = User.class)
+    @JsonIgnoreProperties({"email", "suite", "role"})
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 

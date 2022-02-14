@@ -11,22 +11,19 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class AccountService {
 
-    private UserRepository userRepository;
     private AccountRepository accountRepository;
 
     @Autowired
-    public AccountService(UserRepository userRepository,
-                       AccountRepository accountRepository) {
-        this.userRepository = userRepository;
+    public AccountService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
     public Account get(int userId) {
-        return accountRepository.getById(userId);
+        return accountRepository.getByUserId(userId);
     }
 
     public Account put(int userId, int balance) {
-        Account account = accountRepository.getById(userId);
+        Account account = accountRepository.getByUserId(userId);
         account.setBalance(balance);
         accountRepository.save(account);
         return account;
