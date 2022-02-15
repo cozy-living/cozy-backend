@@ -16,7 +16,7 @@ public class AccountController {
     }
 
     /**
-     * getBalance: Lists a user's account to see the amount of balance
+     * getAccount: Lists a user's account to see the amount of balance
      * Method: GET
      * Endpoint: /{userId}/account
      */
