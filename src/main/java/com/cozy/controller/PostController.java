@@ -29,7 +29,7 @@ public class PostController {
     }
 
     /**
-     * listPostByUser: Resident lists all of his or her past posts
+     * listPostsByUser: Resident lists all of his or her past posts
      * Method: GET
      * Endpoint: /{userId}/posts
      */

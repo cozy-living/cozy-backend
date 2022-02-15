@@ -38,5 +38,4 @@ Cozy is a community property management system that contains features including:
 3. [API Doc](https://docs.google.com/document/d/1LLQX0z0ZPF6sfsjUweT3RumIj0ZczjyTNE3MAvJYzzs/edit)
 4. [Meeting Notes](https://docs.google.com/document/d/1nL4bcvQmQDJLTFW4MXks3bw_MohTKD96hatoA1upAeU/edit)
 5. [PRD](https://docs.google.com/document/d/1zdTJFq294dYcr9dUOdOnD4Fx4tFR5DvIc9H20VWuZd8/edit)
-6. [Postman](https://www.getpostman.com/collections/d75bbc23a3a8a36674fd)
-
+6. [Postman](https://www.getpostman.com/collections/47625032c62264ee8e0f)
