@@ -53,6 +53,7 @@ public class EventService {
             throw new UserNotAuthorizedException("The user is not authorized to edit this event!");
         }
         eventRepository.findById(eventId).map(e -> {
+            e.setTitle(eventRequest.getTitle());
             e.setContent(eventRequest.getContent());
             e.setDate(new Date());
             eventRepository.save(e);

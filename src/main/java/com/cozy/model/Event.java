@@ -38,7 +38,7 @@ public class Event implements Serializable {
     // Many-to-one relationship to the User table.
     @JoinColumn(name = "userId")
     @ManyToOne(targetEntity = User.class)
-    @JsonIgnoreProperties({"email", "suite", "role"})
+    @JsonIgnoreProperties({"suite", "role"})
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 

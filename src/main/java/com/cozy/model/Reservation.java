@@ -51,7 +51,7 @@ public class Reservation implements Serializable {
      */
     @JoinColumn(name = "userId")
     @ManyToOne(targetEntity = User.class)
-    @JsonIgnoreProperties({"email", "suite", "role"})
+    @JsonIgnoreProperties({"suite", "role"})
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 

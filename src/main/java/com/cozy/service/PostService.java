@@ -56,6 +56,7 @@ public class PostService {
             throw new UserNotAuthorizedException("The user is not authorized to edit this post!");
         }
         postRepository.findById(postId).map(post -> {
+            post.setTitle(postRequest.getTitle());
             post.setContent(postRequest.getContent());
             post.setDate(new Date());
             postRepository.save(post);
