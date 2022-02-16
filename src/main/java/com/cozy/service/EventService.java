@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -34,6 +35,7 @@ public class EventService {
             throw new UserNotAuthorizedException("The user is not authorized to create a new event!");
         }
         eventRequest.setUser(user);
+        eventRequest.setDate(new Date());
         eventRepository.save(eventRequest);
         return eventRequest;
     }
@@ -51,7 +53,9 @@ public class EventService {
             throw new UserNotAuthorizedException("The user is not authorized to edit this event!");
         }
         eventRepository.findById(eventId).map(e -> {
+            e.setTitle(eventRequest.getTitle());
             e.setContent(eventRequest.getContent());
+            e.setDate(new Date());
             eventRepository.save(e);
             return e;
         }).orElseThrow(() -> new ResourceNotFoundException

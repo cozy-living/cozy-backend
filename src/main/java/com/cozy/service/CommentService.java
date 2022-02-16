@@ -7,6 +7,7 @@ import com.cozy.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,6 +24,7 @@ public class CommentService {
     public Comment add(int postId, Comment commentRequest) {
         Post post = postRepository.getById(postId);
         commentRequest.setPost(post);
+        commentRequest.setDate(new Date());
         commentRepository.save(commentRequest);
         return commentRequest;
     }

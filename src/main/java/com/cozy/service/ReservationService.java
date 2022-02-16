@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,6 +30,7 @@ public class ReservationService {
     public Reservation add(int userId, Reservation reservation) {
         User user = userRepository.findById(userId);
         reservation.setUser(user);
+        reservation.setDate(new Date());
         reservationRepository.save(reservation);
         return reservation;
     }
