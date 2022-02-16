@@ -25,6 +25,9 @@ public class Event implements Serializable {
     @JsonProperty("id")
     private int id;
 
+    @JsonProperty("title")
+    private String title;
+
     @JsonProperty("content")
     private String content;
 

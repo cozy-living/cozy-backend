@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -34,6 +35,7 @@ public class PostService {
     public Post add(int userId, Post postRequest) {
         User user = userRepository.findById(userId);
         postRequest.setUser(user);
+        postRequest.setDate(new Date());
         postRepository.save(postRequest);
         return postRequest;
     }
@@ -55,6 +57,7 @@ public class PostService {
         }
         postRepository.findById(postId).map(post -> {
             post.setContent(postRequest.getContent());
+            post.setDate(new Date());
             postRepository.save(post);
             return post;
         }).orElseThrow(() -> new ResourceNotFoundException
