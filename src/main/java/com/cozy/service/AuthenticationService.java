@@ -27,7 +27,10 @@ public class AuthenticationService {
         this.jwtUtil = jwtUtil;
     }
 
-    public Token authenticate(User user, UserRole role) throws UserNotExistException {
+    /*
+    Should return a token for user validation, change this to user id for convenient purpose
+     */
+    public int authenticate(User user, UserRole role) throws UserNotExistException {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         } catch (AuthenticationException exception) {
@@ -40,7 +43,8 @@ public class AuthenticationService {
             throw new UserNotExistException("The user account is not authorized!");
         }
 
-        return new Token(jwtUtil.generateToken(user.getUsername()));
+        return authorizedUser.getId();
+//        return new Token(jwtUtil.generateToken(user.getUsername()));
     }
 
 }
