@@ -25,7 +25,7 @@ public class AuthenticationController {
      * Endpoint: /authenticate/admin
      */
     @PostMapping("/authenticate/admin")
-    public Token authenticateAdmin(@RequestBody User user) {
+    public int authenticateAdmin(@RequestBody User user) {
         return authenticationService.authenticate(user, UserRole.ADMIN);
     }
 
@@ -35,7 +35,7 @@ public class AuthenticationController {
      * Endpoint: /authenticate/resident
      */
     @PostMapping("/authenticate/resident")
-    public Token authenticateResident(@RequestBody User user) {
+    public int authenticateResident(@RequestBody User user) {
         return authenticationService.authenticate(user, UserRole.RESIDENT);
     }
 }
