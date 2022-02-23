@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
@@ -23,19 +24,23 @@ public class PostService {
     private PostRepository postRepository;
     private UserRepository userRepository;
     private CommentRepository commentRepository;
+    private AmazonClient amazonClient;
 
     @Autowired
     public PostService(PostRepository postRepository, UserRepository userRepository,
-                       CommentRepository commentRepository) {
+                       CommentRepository commentRepository, AmazonClient amazonClient) {
         this.postRepository = postRepository;
         this.userRepository = userRepository;
         this.commentRepository = commentRepository;
+        this.amazonClient = amazonClient;
     }
 
-    public Post add(int userId, Post postRequest) {
+    public Post add(int userId, Post postRequest, MultipartFile file) {
         User user = userRepository.findById(userId);
         postRequest.setUser(user);
         postRequest.setDate(new Date());
+        String fileUrl = amazonClient.uploadFile(file);
+        postRequest.setFileUrl(fileUrl);
         postRepository.save(postRequest);
         return postRequest;
     }
@@ -75,6 +80,7 @@ public class PostService {
         }
         commentRepository.deleteAllByPostId(postId);
         return postRepository.findById(postId).map(post -> {
+            amazonClient.deleteFileFromS3Bucket(post.getFileUrl());
             postRepository.delete(post);
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new ResourceNotFoundException

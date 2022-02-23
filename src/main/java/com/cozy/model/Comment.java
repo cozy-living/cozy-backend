@@ -36,7 +36,7 @@ public class Comment implements Serializable {
     // Many-to-one relationship to the Post table.
     @JoinColumn(name = "postId")
     @ManyToOne(targetEntity = Post.class)
-    @JsonIgnoreProperties({"content", "date"})
+    @JsonIgnoreProperties({"content", "date", "fileUrl"})
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     private Post post;
 

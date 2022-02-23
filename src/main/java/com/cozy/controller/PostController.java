@@ -4,6 +4,7 @@ import com.cozy.model.Post;
 import com.cozy.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -24,8 +25,9 @@ public class PostController {
      */
     @PostMapping("/{userId}/posts")
     public Post addPost(@PathVariable(value = "userId") int userId,
-                                      @RequestBody Post post) {
-        return postService.add(userId, post);
+                        @ModelAttribute Post post,
+                        @RequestPart(value = "file") MultipartFile file) {
+        return postService.add(userId, post, file);
     }
 
     /**
