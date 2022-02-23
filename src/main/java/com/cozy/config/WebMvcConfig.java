@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+// Resolve CORS issues when deploying the backend to AWS EC2
+
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
     @Override

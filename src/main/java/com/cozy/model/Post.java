@@ -38,7 +38,7 @@ public class Post implements Serializable {
     // Many-to-one relationship to the User table.
     @JoinColumn(name = "userId")
     @ManyToOne(targetEntity = User.class)
-    @JsonIgnoreProperties({"suite", "role"})
+    @JsonIgnoreProperties({"role"})
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
