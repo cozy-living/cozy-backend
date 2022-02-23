@@ -20,13 +20,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // TODO: allow more http methods here
         http
                 .authorizeRequests()
-//                .antMatchers(HttpMethod.POST, "/register/*").permitAll()
-//                .antMatchers(HttpMethod.POST, "/authenticate/*").permitAll()
-//                .antMatchers(HttpMethod.POST, "/dashboard/*").permitAll()
-//                .antMatchers(HttpMethod.GET, "/reservation/*").permitAll()
+//                .antMatchers("/register/**").permitAll()
+//                .antMatchers("/authenticate/**").permitAll()
+//                .antMatchers("/events/**").permitAll()
+//                .antMatchers("/reservations/**").permitAll()
+//                .antMatchers("/posts/**").permitAll()
+//                .antMatchers("/comments/**").permitAll()
+//                .antMatchers("/storage/**").permitAll()
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

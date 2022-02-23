@@ -62,7 +62,7 @@ public class ReservationController {
     }
 
     /**
-     * deleteReservation: Admin deletes a reservation after changing its state
+     * deleteReservations: Admin deletes a reservation after changing its state
      * Method: DELETE
      * Endpoint: /{userId}/reservations/{reservationId}
      */
