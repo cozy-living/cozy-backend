@@ -4,6 +4,7 @@ import com.cozy.model.Event;
 import com.cozy.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -24,8 +25,9 @@ public class EventController {
      */
     @PostMapping("/{userId}/events")
     public Event addEvent(@PathVariable(value = "userId") int userId,
-                          @RequestBody Event event) {
-        return eventService.add(userId, event);
+                          @ModelAttribute Event event,
+                          @RequestPart(value = "file") MultipartFile file) {
+        return eventService.add(userId, event, file);
     }
 
     /**

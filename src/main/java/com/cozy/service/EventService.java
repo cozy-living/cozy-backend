@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
@@ -20,22 +21,27 @@ import java.util.List;
 public class EventService {
     private EventRepository eventRepository;
     private UserRepository userRepository;
+    private AmazonClient amazonClient;
 
     @Autowired
-    public EventService(EventRepository eventRepository, UserRepository userRepository) {
+    public EventService(EventRepository eventRepository,
+                        UserRepository userRepository, AmazonClient amazonClient) {
         this.eventRepository = eventRepository;
         this.userRepository = userRepository;
+        this.amazonClient = amazonClient;
     }
 
-    public Event add(int userId, Event eventRequest)
+    public Event add(int userId, Event eventRequest, MultipartFile file)
             throws UserNotAuthorizedException {
         User user = userRepository.findById(userId);
         if (!user.getRole().equals(UserRole.ADMIN.name())) {
             log.error("The user is not authorized to create a new event!");
             throw new UserNotAuthorizedException("The user is not authorized to create a new event!");
         }
-        eventRequest.setUser(user);
+        String fileUrl = amazonClient.uploadFile(file);
         eventRequest.setDate(new Date());
+        eventRequest.setFileUrl(fileUrl);
+        eventRequest.setUser(user);
         eventRepository.save(eventRequest);
         return eventRequest;
     }
@@ -71,6 +77,7 @@ public class EventService {
             throw new UserNotAuthorizedException("The user is not authorized to delete this event!");
         }
         return eventRepository.findById(eventId).map(e -> {
+            amazonClient.deleteFileFromS3Bucket(e.getFileUrl());
             eventRepository.delete(e);
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new ResourceNotFoundException

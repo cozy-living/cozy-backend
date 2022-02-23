@@ -17,7 +17,7 @@ public class BucketController {
     }
 
     /**
-     * uploadFile: Uploads an image (size less than 1 MB) to AWS S3 bucket;
+     * uploadFile: Uploads a file (image/video whose size is less than 10 MB) to AWS S3 bucket;
      *             needs to pass in the file to be uploaded
      * Method: POST
      * Endpoint: /storage/uploadFile
@@ -28,7 +28,7 @@ public class BucketController {
     }
 
     /**
-     * deleteFile: Delete an existing image from AWS S3 bucket;
+     * deleteFile: Delete an existing file from AWS S3 bucket;
      *             needs to pass in the url of the file
      * Method: DELETE
      * Endpoint: /storage/deleteFile

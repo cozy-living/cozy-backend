@@ -35,6 +35,9 @@ public class Event implements Serializable {
     @JsonProperty("date")
     private Date date;
 
+    @JsonProperty("fileUrl")
+    private String fileUrl;
+
     // Many-to-one relationship to the User table.
     @JoinColumn(name = "userId")
     @ManyToOne(targetEntity = User.class)
