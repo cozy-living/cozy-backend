@@ -1,12 +1,8 @@
-## Cozy
+# Cozy
 
-### This is the backend repo for Cozy. See [frontend repo](https://github.com/cozy-living/cozy).
+### This is Cozy's backend repo. See [frontend repo](https://github.com/cozy-living/cozy).
 
-### API Documentation
-
-[https://docs.google.com/document/d/e/2PACX-1vSRz-JXj2DSVFzVYnsODOsVyEFMrbS11evcMgfUf4vNt5liIvX02sKUqspULCsQuEAbfvT0uytUwHHW/pub](https://docs.google.com/document/d/e/2PACX-1vSRz-JXj2DSVFzVYnsODOsVyEFMrbS11evcMgfUf4vNt5liIvX02sKUqspULCsQuEAbfvT0uytUwHHW/pub)
-
-### Development Instructions
+## Development Instructions
 
 1. Run `git clone git@github.com:cozy-living/cozy.git` to clone the project to your local machine. If you haven't set up
    the SSH key already, check out [this link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
@@ -26,7 +22,7 @@ Please refer to database entity diagram, API documentation, feature assignment i
 
 1. [Google Drive](https://drive.google.com/drive/u/0/folders/1NSGcEO8dKaahjkDrxAf-ZgzIof-ZQ_W4)
 2. [ERD](https://app.diagrams.net/#G1cGTd0oRyGkhQOIIeLI4RYASQOdp0Cfl6)
-3. [API Doc](https://docs.google.com/document/d/1LLQX0z0ZPF6sfsjUweT3RumIj0ZczjyTNE3MAvJYzzs/edit)
+3. [API Documentation](https://docs.google.com/document/d/1LLQX0z0ZPF6sfsjUweT3RumIj0ZczjyTNE3MAvJYzzs/edit)
 4. [Meeting Notes](https://docs.google.com/document/d/1nL4bcvQmQDJLTFW4MXks3bw_MohTKD96hatoA1upAeU/edit)
 5. [PRD](https://docs.google.com/document/d/1zdTJFq294dYcr9dUOdOnD4Fx4tFR5DvIc9H20VWuZd8/edit)
 6. [Postman](https://www.getpostman.com/collections/47625032c62264ee8e0f)
