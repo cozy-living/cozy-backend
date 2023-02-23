@@ -1,21 +1,12 @@
 ## Cozy
 
-### This is the backend repo for Cozy.
+### This is the backend repo for Cozy. See [frontend repo](https://github.com/cozy-living/cozy).
 
-### App Description
+### API Documentation
 
-Cozy is a community property management system that contains features including:
+[https://docs.google.com/document/d/e/2PACX-1vSRz-JXj2DSVFzVYnsODOsVyEFMrbS11evcMgfUf4vNt5liIvX02sKUqspULCsQuEAbfvT0uytUwHHW/pub](https://docs.google.com/document/d/e/2PACX-1vSRz-JXj2DSVFzVYnsODOsVyEFMrbS11evcMgfUf4vNt5liIvX02sKUqspULCsQuEAbfvT0uytUwHHW/pub)
 
-* Dash Board – designed to announce upcoming events, alert, monthly newsletter and condo policy
-* Discuss Board – designed for resident to post anecdotes, concerns or whatever they want, for example like, I found the
-  light in lower garage is out of work
-* Chat Thread – designed for trustee to communicate instead of using email thread, the idea is coming from slack
-* Calendar Schedule – designed to book common room, reserve maintain service for the condo, such as dumpster clean,
-  garage clean, fire alarm testing, or elevator inspection, etc.
-* Payment Tool – designed to pay condo fee, common room reserve fee (but here we should concern about the data safety
-  and privacy issue)
-
-### Git Instructions
+### Development Instructions
 
 1. Run `git clone git@github.com:cozy-living/cozy.git` to clone the project to your local machine. If you haven't set up
    the SSH key already, check out [this link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
@@ -29,9 +20,9 @@ Cozy is a community property management system that contains features including:
 4. Regularly push your code to GitHub, and make pull requests from main branch to fetch latest changes.
 5. Remember to manaully update your `application.properties` file, as it is gitignored and only exists locally.
 
-### Links
+Please refer to database entity diagram, API documentation, feature assignment in meeting notes, and TODOs in the Spring Boot project when developing, and use Postman to test your APIs before pushing to GitHub
 
-*Please refer to database entity diagram, API documentation, feature assignment in meeting notes, and TODOs in the Spring Boot project when developing, and use Postman to test your APIs before pushing to GitHub*
+### Links (private to team members)
 
 1. [Google Drive](https://drive.google.com/drive/u/0/folders/1NSGcEO8dKaahjkDrxAf-ZgzIof-ZQ_W4)
 2. [ERD](https://app.diagrams.net/#G1cGTd0oRyGkhQOIIeLI4RYASQOdp0Cfl6)
